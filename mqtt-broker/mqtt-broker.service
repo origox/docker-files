@@ -1,12 +1,13 @@
 [Unit]
-Description=Mosquitto Broker
-Requires=network-online.target docker.service
+Description=Mosquitto Broker Container
+Requires=docker.service
 After=docker.service
 
 [Service]
 Restart=always
-ExecStart=/usr/bin/docker run docker run -it -p 8883:8883 --rm --name mqtt-broker -v broker_data:/mqtt/data -v broker_config:/mqtt/config -v broker_log:/mqtt/log origox/mqttbroker:1
+ExecStart=/usr/bin/docker run -p 8883:8883 --name mqtt-broker -v broker_data:/mqtt/data -v broker_config:/mqtt/config -v broker_log:/mqtt/log origox/mqttbroker:1
 ExecStop=/usr/bin/docker stop -t 2 mqtt-broker
+ExecStopPost=/usr/bin/docker rm -f mqtt-broker
 
 [Install]
-WantedBy=local.target
+WantedBy=multi-user.target
