@@ -16,8 +16,6 @@ docker run -it -p 8883:8883 --rm --name my-broker origox/mqttbroker:1
 
 See example here: http://www.steves-internet-guide.com/mosquitto-tls/
 
-### Certificate files need to be place in config/cert
+Certificate files(ca.crt, server.crt, server.key) need to be place in config/cert
 
-### ca.crt, server.crt, server.key
-
-### ca.crt shall be used also by the clients
+Note - ca.crt shall also be used by the clients
