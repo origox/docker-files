@@ -1,2 +1,9 @@
 # emacs tmp files
 *~
+
+# vscode
+.vscode
+
+# cert
+*.crt
+*.key
