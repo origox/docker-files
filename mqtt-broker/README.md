@@ -10,7 +10,13 @@ docker build -t origox/mqttbroker:1 .
 
 docker run -it -p 8883:8883 --rm --name my-broker origox/mqttbroker:1
 
-## Certificate files need to be place in config/cert
+## Setup TSL
+
+### Generate Certificates
+
+See example here: http://www.steves-internet-guide.com/mosquitto-tls/
+
+### Certificate files need to be place in config/cert
 
 ### ca.crt, server.crt, server.key
 
