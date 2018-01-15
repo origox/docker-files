@@ -1,23 +1,17 @@
 # MQTT Broker
 
-MQTT Clients based on [mosquitto](https://mosquitto.org/).
+MQTT Broker from [mosquitto](https://mosquitto.org/).
 
-## Build Image for Linux 
+## Build Docker Image for Raspberry
 
-docker build -t origox/mqtt-client .
-
-## Build Image for Raspberry3 & Jessie 
-docker build -f Dockerfile-rpi -t origox/mqtt-client .
+docker build -t origox/mqttbroker:1 .
 
 ## Run Image
 
-docker run -it --network=bridge --rm origox/mqtt-client
+docker run -it -p 8883:8883 --rm --name my-broker origox/mqttbroker:1
 
-## Usage
-sub -h 172.17.0.2  -t "topic1" -
+## Certificate files need to be place in config/cert
 
-pub -h 172.17.0.2 -m "msg1" -t "topic1"
+### ca.crt, server.crt, server.key
 
-## MQTT Broker
-Test this broker:
-docker run -it -p 1883:1883 -p 9001:9001 -v /mosquitto/config -v /mosquitto/data -v /mosquitto/log eclipse-mosquitto:1.4.12
+### ca.crt shall be used also by the clients
